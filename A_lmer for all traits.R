@@ -27,11 +27,11 @@ df$Timepoint<-as.factor(df$Timepoint)
 
 # df<-subset(df, Treatment != "Control")
 
-df$x<-df$PA_cm.cm2
-summaryBy(x ~ Species, FUN = c(mean, std.error), na.rm = T, df)
+df$x<-df$Wleaf_cm
+summaryBy(x ~ Section+Treatment, FUN = c(mean, std.error), na.rm = T, df)
 m1<-lmer(x ~ Treatment + Section + Section:Treatment + Species + Species:Treatment + (1|Block) + (1|Timepoint), REML = T, df) # + (1|Timepoint)
 # m1<-lmer(x ~ Treatment + Section + Section:Treatment + Species + Species:Treatment + (1|Block), REML = T, df) # + (1|Timepoint)
 anova(m1, ddf = "Kenward-Roger")
-# r.squaredGLMM(m1)
-c1<-cld(emmeans(m1, ~"Species"))
+r.squaredGLMM(m1)
+c1<-cld(emmeans(m1, ~"Section:Treatment"))
 c1

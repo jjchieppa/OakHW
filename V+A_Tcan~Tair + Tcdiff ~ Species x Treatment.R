@@ -24,7 +24,7 @@ df$Timepoint<-as.factor(df$Timepoint)
 
 # Start ####
 
-tiff(file = "V+A_Tcan~Tair + Tcdiff ~ Species x Treatment.tiff", height = 7, width = 10, res = 600, units = "in", compression = "zip+p")
+# tiff(file = "V+A_Tcan~Tair + Tcdiff ~ Species x Treatment.tiff", height = 7, width = 10, res = 600, units = "in", compression = "zip+p")
 
 par(mfrow = c(4,3), omi = c(0.4,0.5,0.1,0.5), mar = c(2,3,1.5,3))
 ox<-seq(-500,55,1); oy<-ox; oo<-lm(oy ~ ox)
@@ -573,4 +573,4 @@ mtext(side = 2, expression(italic(T)[canopy]~(degree*C)),
 mtext(side = 4, expression(delta[canopy]~(degree*C)),
       outer = T, cex = 1.5, padj = 1)
 
-dev.off()
+# dev.off()
